@@ -1,0 +1,21 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "tests": ["tests/*"],
+      "@components/*": ["src/components/*"]
+    },
+    "rootDir": "src", // Specify the root directory for TypeScript files
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "jsx": "react-native",
+    "typeRoots": ["src/@types"],
+  },
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
+}
