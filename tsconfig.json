@@ -7,7 +7,7 @@
       "tests": ["tests/*"],
       "@components/*": ["src/components/*"]
     },
-    "rootDir": "src", // Specify the root directory for TypeScript files
+    "rootDir": "src", 
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,7 +15,5 @@
     "resolveJsonModule": true,
     "jsx": "react-native",
     "typeRoots": ["src/@types"],
-  },
-  "include": ["src/**/*", "tests/**/*"],
-  "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
+  }
 }
