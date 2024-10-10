@@ -1,12 +1,8 @@
-
 import React from 'react';
-import { Text } from 'react-native-reanimated/lib/typescript/Animated';
+import {Text} from 'react-native';
 
 function App(): React.JSX.Element {
-
-  return (
-   <Text>App</Text>
-  );
+  return <Text>Hello</Text>;
 }
 
 export default App;
