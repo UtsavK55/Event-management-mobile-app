@@ -1,8 +1,9 @@
+import {useState} from 'react';
+import {SafeAreaView} from 'react-native';
+
 import {Button} from '@src/components/button';
 import {Input} from '@src/components/input';
 import {alphaRegex, emailRegex, passwordRegex} from '@src/constants/constant';
-import {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -25,9 +26,9 @@ const SignUp = () => {
   });
 
   const handleInputChange = (inputIdentifier: string, enteredValue: string) => {
-    setInputs(curInputs => {
+    setInputs(currentInputs => {
       return {
-        ...curInputs,
+        ...currentInputs,
         [inputIdentifier]: {value: enteredValue, isValid: true},
       };
     });
@@ -65,7 +66,7 @@ const SignUp = () => {
       });
       return;
     }
-    console.log(signupData);
+
   };
 
   return (
