@@ -1,9 +1,10 @@
 import { Pressable, Text, View } from 'react-native';
+
 import { styles } from './styles';
 
-function Button({ children, onPress, mode, style }:ButtonProps) {
+function Button({ children, onPress, mode }:ButtonProps) {
   return (
-    <View style={style}>
+
       <Pressable
         onPress={onPress}
         style={({ pressed }) => pressed && styles.pressed}
@@ -14,7 +15,7 @@ function Button({ children, onPress, mode, style }:ButtonProps) {
           </Text>
         </View>
       </Pressable>
-    </View>
+
   );
 }
 

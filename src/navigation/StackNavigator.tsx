@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import Dashboard from '@src/screens/dashboard/Dashboard';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

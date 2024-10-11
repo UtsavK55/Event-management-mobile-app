@@ -1,12 +1,9 @@
 import {Alert, Text, TextInput, View} from 'react-native';
+
 import { styles } from './styles';
 
 const Input = ({label, invalid, style, textInputConfig}:InputProps) => {
   const inputStyles = [styles.input];
-
-//   if (textInputConfig && textInputConfig?.multiline) {
-//     inputStyles.push(styles.inputMultiline);
-//   }
 
   if (invalid) {
     Alert.alert("Enter correct value ");

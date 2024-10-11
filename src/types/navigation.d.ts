@@ -1,6 +1,6 @@
 type AuthStackParamList = {
-  SignUp: undefined;
-  Login: undefined;
+  SIGNUP: undefined;
+  LOGIN: undefined;
 };
 
 type RootStackParamList = {
