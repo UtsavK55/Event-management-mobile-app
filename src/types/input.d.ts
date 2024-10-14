@@ -7,4 +7,15 @@ declare global {
     style?: TextStyle | ViewStyle;
     textInputConfig?: {};
   }
+
+  interface ItemProps {
+    title: string;
+  }
+
+  interface RadioButtonProps {
+    radioOption: string;
+    setRadioOption: Dispatch<SetStateAction<string>>;
+    data: {id: string; title: string}[];
+    label: string;
+  }
 }

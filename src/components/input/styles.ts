@@ -2,19 +2,19 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   inputContainer: {
-    marginHorizontal: 4,
-    marginVertical: 8,
+    marginHorizontal: 32,
+    marginVertical: 10,
   },
   label: {
-    fontSize: 12,
+    fontSize: 14,
     color: 'black',
     marginBottom: 4,
   },
   input: {
-    backgroundColor: 'gray',
+    backgroundColor: '#D9D9D9',
     color: 'black',
     padding: 6,
-    borderRadius: 6,
+    borderRadius: 8,
     fontSize: 18,
   },
   inputMultiline: {
@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   invalidLabel: {
+    fontSize: 12,
     color: 'red',
   },
   invalidInput: {

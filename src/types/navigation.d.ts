@@ -4,5 +4,15 @@ type AuthStackParamList = {
 };
 
 type RootStackParamList = {
-    Dashboard: undefined;
+    DASHBOARD: undefined;
 }
+
+type SignupScreenProps = NativeStackScreenProps<
+RootStackParamList,
+'SIGNUP'
+>;
+
+type LoginScreenProps = NativeStackScreenProps<
+RootStackParamList,
+'LOGIN'
+>;
