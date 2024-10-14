@@ -1,8 +1,14 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AuthNavigator from '@src/navigation/AuthNavigator';
 
 function App(): React.JSX.Element {
-  return <Text>Hello</Text>;
+  return (
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
+  )
 }
 
 export default App;
