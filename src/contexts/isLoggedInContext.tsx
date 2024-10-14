@@ -1,27 +1,27 @@
 import {createContext, useContext, useState, ReactNode} from 'react';
 
-const isLoggedInContext = createContext<isLoggedInContextType | undefined>(
+const userLoginContext = createContext<userLoginContextType | undefined>(
   undefined,
 );
 
-export const useisLoggedInContext = () => {
-  const context = useContext(isLoggedInContext);
+export const useUserLoginContext = () => {
+  const context = useContext(userLoginContext);
   if (!context) {
     throw new Error(
-      'useisLoggedInContext must be used within an isLoggedInProvider',
+      'useUserLoginContext must be used within an UserLoginProvider',
     );
   }
   return context;
 };
 
-export const IsLoggedInProvider: React.FC<{children: ReactNode}> = ({
+export const UserLoginProvider: React.FC<{children: ReactNode}> = ({
   children,
 }) => {
-  const [isLoggedIn, setisLoggedIn] = useState<string>('');
+  const [loginId, setLoginId] = useState<string>('');
 
   return (
-    <isLoggedInContext.Provider value={{isLoggedIn, setisLoggedIn}}>
+    <userLoginContext.Provider value={{loginId, setLoginId}}>
       {children}
-    </isLoggedInContext.Provider>
+    </userLoginContext.Provider>
   );
 };

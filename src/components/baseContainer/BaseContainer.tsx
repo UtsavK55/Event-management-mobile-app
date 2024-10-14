@@ -1,9 +1,8 @@
-
-import {ViewStyles} from '@src/theme/ViewStyles';
-import { View } from 'react-native';
+import {viewStyles} from '@src/theme/ViewStyles';
+import {View} from 'react-native';
 
 const BaseContainer = ({children}: {children: React.ReactNode}) => {
-  return <View style={ViewStyles.View}>{children}</View>;
+  return <View style={viewStyles.view}>{children}</View>;
 };
 
 export default BaseContainer;

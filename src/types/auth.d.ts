@@ -15,9 +15,9 @@ interface SignupInfoContextType {
   setSignupInfo: Dispatch<SetStateAction<SignupInfoContextType>>;
 }
 
-interface isLoggedInContextType {
-  isLoggedIn: string;
-  setisLoggedIn: Dispatch<SetStateAction<string>>;
+interface userLoginContextType {
+  loginId: string;
+  setLoginId: Dispatch<SetStateAction<string>>;
 }
 
 interface AlreadySignedUpProps {

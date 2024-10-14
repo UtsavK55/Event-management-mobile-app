@@ -1,14 +1,14 @@
 import BaseContainer from '@src/components/baseContainer';
 import {Button} from '@src/components/button';
-import {useisLoggedInContext} from '@src/contexts/isLoggedInContext';
+import { useUserLoginContext } from '@src/contexts/isLoggedInContext';
 import {Text} from 'react-native';
 
 const Dashboard = () => {
-  const {setisLoggedIn} = useisLoggedInContext();
+  const {setLoginId} = useUserLoginContext();
   return (
     <BaseContainer>
       <Text>Dashboard</Text>
-      <Button onPress={() => setisLoggedIn('')}>Log out</Button>
+      <Button onPress={() => setLoginId('')}>Log out</Button>
     </BaseContainer>
   );
 };

@@ -10,13 +10,13 @@ import {
   passwordRegex,
 } from '@src/constants/constant';
 import {getData, storeData} from '@src/storage/storage';
-import {useisLoggedInContext} from '@src/contexts/isLoggedInContext';
 import RadioButton from '@src/components/radioButton';
 import {styles} from './styles';
 import {generateId} from '@src/helpers/helper';
+import {useUserLoginContext} from '@src/contexts/isLoggedInContext';
 
 const SignUpForm = () => {
-  const {setisLoggedIn} = useisLoggedInContext();
+  const {setLoginId} = useUserLoginContext();
 
   const [inputs, setInputs] = useState({
     userName: {
@@ -108,11 +108,11 @@ const SignUpForm = () => {
     setEventsArr(prevEvents => {
       const updatedEvents = [...prevEvents, signupData];
       storeData(updatedEvents, 'signupDataArr');
-      storeData(signupData.id, 'isLoggedIn')
+      storeData(signupData.id, 'isLoggedIn');
       return updatedEvents;
     });
 
-    setisLoggedIn(signupData.id);
+    setLoginId(signupData.id);
   };
 
   return (

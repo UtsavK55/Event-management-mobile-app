@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {Button} from '@components/button';
 import styles from './styles';
 
-const BottomAuthScreen = ({
+const Footer = ({
   text,
   buttonLabel,
   onPressLogin,
@@ -18,4 +18,4 @@ const BottomAuthScreen = ({
   );
 };
 
-export default BottomAuthScreen;
+export default Footer;
