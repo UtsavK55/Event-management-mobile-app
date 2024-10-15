@@ -1,11 +1,12 @@
-import AuthNavigator from './AuthNavigator';
 import {useUserLoginContext} from '@contexts/LoginContext';
+
+import AuthNavigator from './AuthNavigator';
 import TabNavigator from './TabNavigator';
 
 const Navigator = () => {
   const {loginId, setLoginId} = useUserLoginContext();
-  
-  return <>{!loginId ? <AuthNavigator /> : <TabNavigator />}</>;
+
+  return <>{loginId ? <TabNavigator /> : <AuthNavigator />}</>;
 };
 
 export default Navigator;

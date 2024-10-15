@@ -17,7 +17,7 @@ const RadioButton = ({
     <View style={styles.inputContainer}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.options}>
-        {data.map(item => (
+        {data?.map(item => (
           <View key={item.id} style={styles.radioButtonContainer}>
             <Pressable
               style={styles.radioButton}

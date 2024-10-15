@@ -11,7 +11,7 @@ type RootTabParamList = {
 
 type DashboardStackParamList = {
   DASHBOARDHOME: undefined;
-  ADDEVENT: undefined;
+  ADD_EVENT: undefined;
 };
 
 type SignupScreenProps = NativeStackScreenProps<AuthStackParamList, 'SIGNUP'>;

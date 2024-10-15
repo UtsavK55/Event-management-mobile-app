@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import {ROUTES} from '@constants/Routes';
 import AddEvent from '@screens/addEvent/AddEvent';
 import Dashboard from '@screens/dashboard/Dashboard';
@@ -14,7 +15,7 @@ const DashboardStackScreen = () => {
         options={{headerShown: false, gestureEnabled: false}}
       />
       <DashboardStack.Screen
-        name={ROUTES.ADDEVENT}
+        name={ROUTES.ADD_EVENT}
         component={AddEvent}
         options={{headerShown: false, gestureEnabled: false}}
       />

@@ -11,9 +11,10 @@ import {
 } from '@constants/constant';
 import {getData, storeData} from '@storage/storage';
 import RadioButton from '@components/radioButton';
-import {generateId, logoImg} from '@helpers/helper';
+import {generateId, logoImg, validateInput} from '@helpers/helper';
 import {useUserLoginContext} from '@contexts/LoginContext';
 import {storageKeys} from '@constants/storageKeys';
+import { emptySignUpForm } from '@src/constants/formConstants';
 
 import {styles} from './styles';
 
@@ -21,29 +22,7 @@ const SignUpForm = () => {
   
   const {setLoginId} = useUserLoginContext();
 
-  const emptyForm = {
-    userName: {
-      value: '',
-      isValid: true,
-    },
-    email: {
-      value: '',
-      isValid: true,
-    },
-    age: {
-      value: '',
-      isValid: true,
-    },
-    password: {
-      value: '',
-      isValid: true,
-    },
-    confirmPass: {
-      value: '',
-      isValid: true,
-    },
-  };
-  const [inputs, setInputs] = useState(emptyForm);
+  const [inputs, setInputs] = useState(emptySignUpForm);
 
   const [radioOption, setRadioOption] = useState('Male');
 
@@ -78,31 +57,70 @@ const SignUpForm = () => {
       confirmPass: inputs.confirmPass.value,
     };
 
-    const nameIsValid = alphaRegex.test(signupData.userName.trim());
-    const emailIsValid = emailRegex.test(signupData.email);
-    const ageIsValid = !isNaN(signupData.age) && signupData.age > 0;
-    const passwordIsValid = passwordRegex.test(signupData.password);
-    const confirmPassIsValid = signupData.confirmPass === signupData.password;
+    const nameError = validateInput(
+      signupData.userName,
+      alphaRegex,
+      'Name is required.',
+      'Please enter a valid name (only letters).',
+    );
+
+    const emailError = validateInput(
+      signupData.email,
+      emailRegex,
+      'Email is required.',
+      'Please enter a valid email.',
+    );
+
+    const ageError =
+      !signupData.age || signupData.age <= 0
+        ? 'Age is required and must be greater than zero.'
+        : '';
+
+    const passwordError = validateInput(
+      signupData.password,
+      passwordRegex,
+      'Password is required.',
+      "Entered password doesn't match the password format.",
+    );
+
+    const confirmPassError =
+      signupData.confirmPass !== signupData.password
+        ? 'Passwords do not match.'
+        : '';
 
     if (
-      !nameIsValid ||
-      !emailIsValid ||
-      !ageIsValid ||
-      !passwordIsValid ||
-      !confirmPassIsValid
+      nameError ||
+      emailError ||
+      ageError ||
+      passwordError ||
+      confirmPassError
     ) {
       setInputs(currentInputs => ({
         ...currentInputs,
-        userName: {value: currentInputs.userName.value, isValid: nameIsValid},
-        email: {value: currentInputs.email.value, isValid: emailIsValid},
-        age: {value: currentInputs.age.value, isValid: ageIsValid},
+        userName: {
+          value: currentInputs.userName.value,
+          isValid: !nameError,
+          errorMessage: nameError,
+        },
+        email: {
+          value: currentInputs.email.value,
+          isValid: !emailError,
+          errorMessage: emailError,
+        },
+        age: {
+          value: currentInputs.age.value,
+          isValid: !ageError,
+          errorMessage: ageError,
+        },
         password: {
           value: currentInputs.password.value,
-          isValid: passwordIsValid,
+          isValid: !passwordError,
+          errorMessage: passwordError,
         },
         confirmPass: {
           value: currentInputs.confirmPass.value,
-          isValid: confirmPassIsValid,
+          isValid: !confirmPassError,
+          errorMessage: confirmPassError,
         },
       }));
       return;
@@ -119,7 +137,7 @@ const SignUpForm = () => {
     });
 
     setLoginId(signupData.id);
-    setInputs(emptyForm);
+    setInputs(emptySignUpForm);
   };
 
   return (
@@ -134,9 +152,11 @@ const SignUpForm = () => {
           textInputConfig={{
             keyboardType: 'default',
           }}
+          required
+          errorMessage={inputs.userName.errorMessage}
         />
         <Input
-          label="E-mail"
+          label="Email"
           invalid={!inputs.email.isValid}
           onChangeText={(value: string) => handleInputChange('email', value)}
           value={inputs.email.value}
@@ -144,6 +164,8 @@ const SignUpForm = () => {
             keyboardType: 'email-address',
             autoCapitalize: 'none',
           }}
+          required
+          errorMessage={inputs.email.errorMessage}
         />
         <Input
           label="Age"
@@ -153,6 +175,8 @@ const SignUpForm = () => {
           textInputConfig={{
             keyboardType: 'numeric',
           }}
+          required
+          errorMessage={inputs.age.errorMessage}
         />
 
         <RadioButton
@@ -169,6 +193,8 @@ const SignUpForm = () => {
           textInputConfig={{
             keyboardType: 'default',
           }}
+          required
+          errorMessage={inputs.password.errorMessage}
         />
         <Input
           label="Confirm Password"
@@ -180,6 +206,8 @@ const SignUpForm = () => {
           textInputConfig={{
             keyboardType: 'default',
           }}
+          required
+          errorMessage={inputs.confirmPass.errorMessage}
         />
       </ScrollView>
       <View style={styles.buttonContainer}>

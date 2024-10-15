@@ -1,5 +1,5 @@
-import {View} from 'react-native';
 import {useState} from 'react';
+import {View} from 'react-native';
 import {Alert, Image, Text} from 'react-native';
 
 import {Button} from '@components/button';
@@ -7,7 +7,7 @@ import {Input} from '@components/input';
 import {emailRegex, passwordRegex} from '@constants/constant';
 import {getData, storeData} from '@storage/storage';
 import {useUserLoginContext} from '@contexts/LoginContext';
-import {logoImg} from '@helpers/helper';
+import {logoImg, validateInput} from '@helpers/helper';
 import {storageKeys} from '@constants/storageKeys';
 
 import {styles} from './styles';
@@ -20,10 +20,12 @@ const LoginForm = () => {
     email: {
       value: '',
       isValid: true,
+      errorMessage: '',
     },
     password: {
       value: '',
       isValid: true,
+      errorMessage: '',
     },
   });
 
@@ -42,31 +44,44 @@ const LoginForm = () => {
       password: inputs.password.value,
     };
 
-    const emailIsValid = emailRegex.test(loginData.email);
-    const passwordIsValid = passwordRegex.test(loginData.password);
+    const emailError = validateInput(
+      loginData.email,
+      emailRegex,
+      'Email is required.',
+      'Please enter a valid email.',
+    );
 
-    if (!emailIsValid || !passwordIsValid) {
+    const passwordError = validateInput(
+      loginData.password,
+      passwordRegex,
+      'Password is required.',
+      "Entered password doesn't match the password format.",
+    );
+
+    if (emailError || passwordError) {
       setInputs(currentInputs => ({
-        ...currentInputs,
-        email: {value: currentInputs.email.value, isValid: emailIsValid},
+        email: {
+          ...currentInputs.email,
+          isValid: !emailError,
+          errorMessage: emailError,
+        },
         password: {
-          value: currentInputs.password.value,
-          isValid: passwordIsValid,
+          ...currentInputs.password,
+          isValid: !passwordError,
+          errorMessage: passwordError,
         },
       }));
+
       return;
     }
 
     const userDataArr = await getData(storageKeys.signUpData);
 
-    const userData = userDataArr
-      ? userDataArr.find((item: SignupInfo) => {
-          return (
-            item.email === loginData.email &&
-            item.password === loginData.password
-          );
-        })
-      : null;
+    const userData =
+      userDataArr?.find(({email, password}: SignupInfo) => {
+        if (email !== loginData.email) return false;
+        return password === loginData.password;
+      }) || null;
 
     if (userData) {
       setLoginId(userData.id);
@@ -75,6 +90,7 @@ const LoginForm = () => {
       Alert.alert('Invalid credentials');
     }
   };
+
   return (
     <View>
       <Image style={styles.image} source={logoImg} />
@@ -88,6 +104,8 @@ const LoginForm = () => {
           keyboardType: 'email-address',
           autoCapitalize: 'none',
         }}
+        required
+        errorMessage={inputs.email.errorMessage}
       />
       <Input
         label="Password"
@@ -96,7 +114,10 @@ const LoginForm = () => {
         onChangeText={(value: string) => handleInputChange('password', value)}
         textInputConfig={{
           keyboardType: 'default',
+          secureTextEntry: 'true',
         }}
+        required={true}
+        errorMessage={inputs.password.errorMessage}
       />
       <View style={styles.buttonContainer}>
         <Button mode="default" label="Submit" onPress={handleSubmit} />

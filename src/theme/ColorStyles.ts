@@ -10,7 +10,6 @@ export const colors = {
     error: '#FF0000', // Red
     success: '#28a745', // Green
     warning: '#FFC107', // Yellow
-    cardBackground: '#F9F9F9', // Card Background
-    shadow: 'rgba(0, 0, 0, 0.1)', // Shadow Color
-    // Add more colors as needed
+    cardBackground: '#F9F9F9', 
+    shadow: 'rgba(0, 0, 0, 0.1)', 
   };

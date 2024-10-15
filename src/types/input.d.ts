@@ -5,7 +5,11 @@ declare global {
     label: string;
     invalid?: boolean;
     style?: TextStyle | ViewStyle;
+    value: string;
+    onChangeText: (value: string) => void;
     textInputConfig?: {};
+    required?: boolean;
+    errorMessage?: string;
   }
 
   interface ItemProps {

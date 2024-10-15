@@ -9,7 +9,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name={ROUTES.DashboardStackScreen}
+        name={ROUTES.DASHBOARD_STACK_SCREEN}
         component={DashboardStackScreen}
         options={{headerShown: false}}
       />

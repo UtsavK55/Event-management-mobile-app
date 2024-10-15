@@ -1,14 +1,15 @@
-import {storageKeys} from '@constants/storageKeys';
-import {getData} from '@storage/storage';
 import {createContext, useContext, useState, ReactNode, useEffect} from 'react';
 
-const userLoginContext = createContext<userLoginContextType | undefined>(
+import {storageKeys} from '@constants/storageKeys';
+import {getData} from '@storage/storage';
+
+const UserLoginContext = createContext<UserLoginContextType | undefined>(
   undefined,
 );
 
 export const useUserLoginContext = () => {
 
-  const context = useContext(userLoginContext);
+  const context = useContext(UserLoginContext);
   if (!context) {
     throw new Error(
       'useUserLoginContext must be used within an UserLoginProvider',
@@ -26,15 +27,15 @@ export const UserLoginProvider: React.FC<{children: ReactNode}> = ({
   useEffect(() => {
     const fetchUsers = async () => {
       const userId = await getData(storageKeys.loginId);
-      userId ? setLoginId(userId) : setLoginId('');
+      setLoginId(userId || '');
     };
 
     fetchUsers();
   }, []);
   
   return (
-    <userLoginContext.Provider value={{loginId, setLoginId}}>
+    <UserLoginContext.Provider value={{loginId, setLoginId}}>
       {children}
-    </userLoginContext.Provider>
+    </UserLoginContext.Provider>
   );
 };

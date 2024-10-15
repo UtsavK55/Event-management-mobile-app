@@ -15,7 +15,7 @@ interface SignupInfoContextType {
   setUserInfoArr: Dispatch<SetStateAction<SignupInfoArr>>;
 }
 
-interface userLoginContextType {
+interface UserLoginContextType {
   loginId: string;
   setLoginId: Dispatch<SetStateAction<string>>;
 }

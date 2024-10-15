@@ -9,22 +9,25 @@ const Input = ({
   value,
   onChangeText,
   textInputConfig,
+  required,
+  errorMessage = 'Please enter a valid value',
 }: InputProps) => {
   
   const inputStyles = [styles.input];
 
   return (
     <View style={[styles.inputContainer, style]}>
-      <Text style={[styles.label]}>{label}*</Text>
+      <Text style={[styles.label]}>
+        {label}
+        {required && <Text style={styles.invalidLabel}> *</Text>}
+      </Text>
       <TextInput
         style={inputStyles}
         value={value}
         onChangeText={onChangeText}
         {...textInputConfig}
       />
-      {invalid && (
-        <Text style={styles.invalidLabel}>Please enter correct value</Text>
-      )}
+      {invalid && <Text style={styles.invalidLabel}>{errorMessage}</Text>}
     </View>
   );
 };
