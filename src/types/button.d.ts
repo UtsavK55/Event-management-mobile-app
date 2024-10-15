@@ -2,7 +2,7 @@ import {ViewStyle} from 'react-native';
 
 declare global {
   interface ButtonProps {
-    children: React.ReactNode;
+    label: string;
     onPress?: () => void;
     mode?: 'default' | 'flat';
     style?: ViewStyle;

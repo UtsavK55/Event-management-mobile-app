@@ -1,14 +1,15 @@
-import {ROUTES} from '@src/constants/Routes';
+import {ROUTES} from '@constants/Routes';
 
-import BaseContainer from '@src/components/baseContainer';
-import Footer from '@src/components/footer';
-import LoginForm from '@src/components/loginForm';
+import BaseContainer from '@components/baseContainer';
+
+import LoginForm from '@components/loginForm';
+import FooterAuth from '@components/footerAuth';
 
 const Login = ({navigation}: LoginScreenProps) => {
   return (
     <BaseContainer>
       <LoginForm />
-      <Footer
+      <FooterAuth
         text="Don't have an account?"
         buttonLabel="Sign Up"
         onPressLogin={() => navigation.replace(ROUTES.SIGNUP)}

@@ -1,5 +1,9 @@
 export const ROUTES = {
   LOGIN: 'LOGIN',
   SIGNUP: 'SIGNUP',
-  DASHBOARD: 'DASHBOARD',
+  DASHBOARD: 'DASHBOARDHOME',
+  EVENTS: 'EVENTS',
+  PROFILE: 'PROFILE',
+  ADDEVENT: 'ADDEVENT',
+  DashboardStackScreen: 'DASHBOARD',
 } as const;

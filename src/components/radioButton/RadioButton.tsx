@@ -8,13 +8,14 @@ const RadioButton = ({
   data,
   label,
 }: RadioButtonProps) => {
+  
   const handlePress = (value: string) => {
     setRadioOption(value);
   };
 
   return (
     <View style={styles.inputContainer}>
-      <Text style={styles.label}>{label}*</Text>
+      <Text style={styles.label}>{label}</Text>
       <View style={styles.options}>
         {data.map(item => (
           <View key={item.id} style={styles.radioButtonContainer}>

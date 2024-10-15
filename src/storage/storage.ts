@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const storeData = async (value: SignupInfoArr | string, key: string) => {
+export const storeData = async <T>(value: T, key: string) => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(key, jsonValue);
@@ -20,7 +20,7 @@ export const getData = async (key: string) => {
   }
 };
 
-export const clearUserData = async (key: string) => {
+export const clearData = async (key: string) => {
   try {
     await AsyncStorage.removeItem(key);
   } catch (e) {

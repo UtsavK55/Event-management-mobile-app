@@ -3,16 +3,29 @@ type AuthStackParamList = {
   LOGIN: undefined;
 };
 
-type RootStackParamList = {
-    DASHBOARD: undefined;
-}
+type RootTabParamList = {
+  DASHBOARD: undefined;
+  EVENTS: undefined;
+  PROFILE: undefined;
+};
 
-type SignupScreenProps = NativeStackScreenProps<
-RootStackParamList,
-'SIGNUP'
+type DashboardStackParamList = {
+  DASHBOARDHOME: undefined;
+  ADDEVENT: undefined;
+};
+
+type SignupScreenProps = NativeStackScreenProps<AuthStackParamList, 'SIGNUP'>;
+
+type LoginScreenProps = NativeStackScreenProps<AuthStackParamList, 'LOGIN'>;
+
+type DashboardScreenProps = NativeStackScreenProps<
+  DashboardStackParamList,
+  'DASHBOARD'
 >;
 
-type LoginScreenProps = NativeStackScreenProps<
-RootStackParamList,
-'LOGIN'
+type AddEventScreenProps = NativeStackScreenProps<
+  DashboardStackParamList,
+  'ADDEVENT'
 >;
+
+type EventListScreenProps = NativeStackScreenProps<RootTabParamList, 'EVENTS'>;

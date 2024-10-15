@@ -1,14 +1,16 @@
+import {colors} from '@theme/GlobalStyles';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   button: {
     borderRadius: 8,
     padding: 8,
-    backgroundColor: '#4169E1',
+    backgroundColor: colors.primary,
     display: 'flex',
     alignSelf: 'center',
     paddingHorizontal: 28,
     paddingVertical: 10,
+    zIndex: 1,
   },
   flat: {
     backgroundColor: 'transparent',
@@ -16,16 +18,15 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   buttonText: {
-    color: 'white',
+    color: colors.background,
     textAlign: 'center',
     fontSize: 14,
   },
   flatText: {
-    color: 'blue',
+    color: colors.textFlat,
   },
   pressed: {
     opacity: 0.75,
-    backgroundColor: 'green',
     borderRadius: 4,
   },
 });

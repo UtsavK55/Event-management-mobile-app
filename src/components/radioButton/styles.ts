@@ -1,3 +1,4 @@
+import {colors} from '@theme/GlobalStyles';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -9,10 +10,10 @@ export const styles = StyleSheet.create({
   radioButton: {
     height: 20,
     width: 20,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: colors.cardBackground,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#E6E6E6',
+    borderColor: colors.secondary,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
     height: 14,
     width: 14,
     borderRadius: 7,
-    backgroundColor: 'gray',
+    backgroundColor: colors.textSecondary,
   },
   radioButtonText: {
     fontSize: 16,
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: 'black',
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   inputContainer: {

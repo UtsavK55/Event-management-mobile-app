@@ -3,19 +3,17 @@ import {Text, View} from 'react-native';
 import {Button} from '@components/button';
 import styles from './styles';
 
-const Footer = ({
+const FooterAuth = ({
   text,
   buttonLabel,
   onPressLogin,
-}: AlreadySignedUpProps) => {
+}: FooterAuthProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{text}</Text>
-      <Button mode="flat" onPress={onPressLogin}>
-        {buttonLabel}
-      </Button>
+      <Button mode="flat" label={buttonLabel} onPress={onPressLogin} />
     </View>
   );
 };
 
-export default Footer;
+export default FooterAuth;

@@ -1,16 +1,17 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import Navigator from '@src/navigation/Navigator';
-import {UserLoginProvider} from '@src/contexts/isLoggedInContext';
+import Navigator from '@navigation/Navigator';
+import {UserLoginProvider} from '@contexts/LoginContext';
+import {SignupInfoProvider} from '@contexts/SignupInfoContext';
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <UserLoginProvider>
+    <UserLoginProvider>
+      <NavigationContainer>
         <Navigator />
-      </UserLoginProvider>
-    </NavigationContainer>
+      </NavigationContainer>
+    </UserLoginProvider>
   );
 }
 

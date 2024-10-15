@@ -1,8 +1,9 @@
-import {viewStyles} from '@src/theme/ViewStyles';
-import {View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+
+import {viewStyles} from '@theme/ViewStyles';
 
 const BaseContainer = ({children}: {children: React.ReactNode}) => {
-  return <View style={viewStyles.view}>{children}</View>;
+  return <SafeAreaView style={viewStyles.view}>{children}</SafeAreaView>;
 };
 
 export default BaseContainer;

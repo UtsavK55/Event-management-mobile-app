@@ -1,3 +1,4 @@
+import {colors} from '@theme/GlobalStyles';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -7,12 +8,12 @@ export const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: 'black',
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   input: {
-    backgroundColor: '#D9D9D9',
-    color: 'black',
+    backgroundColor: colors.secondary,
+    color: colors.textPrimary,
     padding: 6,
     borderRadius: 8,
     fontSize: 18,
@@ -23,9 +24,9 @@ export const styles = StyleSheet.create({
   },
   invalidLabel: {
     fontSize: 12,
-    color: 'red',
+    color: colors.error,
   },
   invalidInput: {
-    backgroundColor: 'red',
+    backgroundColor: colors.error,
   },
 });

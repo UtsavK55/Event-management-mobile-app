@@ -11,8 +11,8 @@ interface SignupInfo {
 type SignupInfoArr = SignupInfo[];
 
 interface SignupInfoContextType {
-  signupInfo: SignupInfo;
-  setSignupInfo: Dispatch<SetStateAction<SignupInfoContextType>>;
+  userInfoArr: SignupInfo[];
+  setUserInfoArr: Dispatch<SetStateAction<SignupInfoArr>>;
 }
 
 interface userLoginContextType {
@@ -20,7 +20,7 @@ interface userLoginContextType {
   setLoginId: Dispatch<SetStateAction<string>>;
 }
 
-interface AlreadySignedUpProps {
+interface FooterAuthProps {
   text: string;
   buttonLabel: string;
   onPressLogin: () => void;

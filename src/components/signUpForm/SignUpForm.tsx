@@ -1,24 +1,27 @@
 import {useEffect, useState} from 'react';
 import {Image, ScrollView, View} from 'react-native';
 
-import {Button} from '@src/components/button';
-import {Input} from '@src/components/input';
+import {Button} from '@components/button';
+import {Input} from '@components/input';
 import {
   alphaRegex,
   emailRegex,
   genderData,
   passwordRegex,
-} from '@src/constants/constant';
-import {getData, storeData} from '@src/storage/storage';
-import RadioButton from '@src/components/radioButton';
+} from '@constants/constant';
+import {getData, storeData} from '@storage/storage';
+import RadioButton from '@components/radioButton';
+import {generateId, logoImg} from '@helpers/helper';
+import {useUserLoginContext} from '@contexts/LoginContext';
+import {storageKeys} from '@constants/storageKeys';
+
 import {styles} from './styles';
-import {generateId} from '@src/helpers/helper';
-import {useUserLoginContext} from '@src/contexts/isLoggedInContext';
 
 const SignUpForm = () => {
+  
   const {setLoginId} = useUserLoginContext();
 
-  const [inputs, setInputs] = useState({
+  const emptyForm = {
     userName: {
       value: '',
       isValid: true,
@@ -39,16 +42,17 @@ const SignUpForm = () => {
       value: '',
       isValid: true,
     },
-  });
+  };
+  const [inputs, setInputs] = useState(emptyForm);
 
   const [radioOption, setRadioOption] = useState('Male');
 
-  const [eventsArr, setEventsArr] = useState<SignupInfoArr>([]);
+  const [userInfoArr, setUserInfoArr] = useState<SignupInfoArr>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const userData = await getData('signupDataArr');
-      setEventsArr(userData);
+      const userData = await getData(storageKeys.signUpData);
+      userData ? setUserInfoArr(userData) : setUserInfoArr([]);
     };
 
     fetchUsers();
@@ -87,65 +91,67 @@ const SignUpForm = () => {
       !passwordIsValid ||
       !confirmPassIsValid
     ) {
-      setInputs(currentInputs => {
-        return {
-          userName: {value: currentInputs.userName.value, isValid: nameIsValid},
-          email: {value: currentInputs.email.value, isValid: emailIsValid},
-          age: {value: currentInputs.age.value, isValid: ageIsValid},
-          password: {
-            value: currentInputs.password.value,
-            isValid: passwordIsValid,
-          },
-          confirmPass: {
-            value: currentInputs.confirmPass.value,
-            isValid: confirmPassIsValid,
-          },
-        };
-      });
+      setInputs(currentInputs => ({
+        ...currentInputs,
+        userName: {value: currentInputs.userName.value, isValid: nameIsValid},
+        email: {value: currentInputs.email.value, isValid: emailIsValid},
+        age: {value: currentInputs.age.value, isValid: ageIsValid},
+        password: {
+          value: currentInputs.password.value,
+          isValid: passwordIsValid,
+        },
+        confirmPass: {
+          value: currentInputs.confirmPass.value,
+          isValid: confirmPassIsValid,
+        },
+      }));
       return;
     }
 
-    setEventsArr(prevEvents => {
-      const updatedEvents = [...prevEvents, signupData];
-      storeData(updatedEvents, 'signupDataArr');
-      storeData(signupData.id, 'isLoggedIn');
-      return updatedEvents;
+    setUserInfoArr(prevInfo => {
+      const updatedInfo = [
+        ...(Array.isArray(prevInfo) ? prevInfo : []),
+        signupData,
+      ];
+      storeData(updatedInfo, storageKeys.signUpData);
+      storeData(signupData.id, storageKeys.loginId);
+      return updatedInfo;
     });
 
     setLoginId(signupData.id);
+    setInputs(emptyForm);
   };
 
   return (
     <View>
-      <Image style={styles.image} source={require('../../assets/logo.png')} />
+      <Image style={styles.image} source={logoImg} />
       <ScrollView>
         <Input
           label="Name"
           invalid={!inputs.userName.isValid}
+          value={inputs.userName.value}
+          onChangeText={(value: string) => handleInputChange('userName', value)}
           textInputConfig={{
             keyboardType: 'default',
-            onChangeText: (value: string) =>
-              handleInputChange('userName', value),
-            value: inputs.userName.value,
           }}
         />
         <Input
           label="E-mail"
           invalid={!inputs.email.isValid}
+          onChangeText={(value: string) => handleInputChange('email', value)}
+          value={inputs.email.value}
           textInputConfig={{
             keyboardType: 'email-address',
-            onChangeText: (value: string) => handleInputChange('email', value),
-            value: inputs.email.value,
             autoCapitalize: 'none',
           }}
         />
         <Input
           label="Age"
           invalid={!inputs.age.isValid}
+          onChangeText={(value: string) => handleInputChange('age', value)}
+          value={inputs.age.value}
           textInputConfig={{
             keyboardType: 'numeric',
-            onChangeText: (value: string) => handleInputChange('age', value),
-            value: inputs.age.value,
           }}
         />
 
@@ -153,33 +159,31 @@ const SignUpForm = () => {
           radioOption={radioOption}
           setRadioOption={setRadioOption}
           data={genderData}
-          label="Gender"
+          label="Gender*"
         />
         <Input
           label="Password"
           invalid={!inputs.password.isValid}
+          onChangeText={(value: string) => handleInputChange('password', value)}
+          value={inputs.password.value}
           textInputConfig={{
             keyboardType: 'default',
-            onChangeText: (value: string) =>
-              handleInputChange('password', value),
-            value: inputs.password.value,
           }}
         />
         <Input
           label="Confirm Password"
           invalid={!inputs.confirmPass.isValid}
+          onChangeText={(value: string) =>
+            handleInputChange('confirmPass', value)
+          }
+          value={inputs.confirmPass.value}
           textInputConfig={{
             keyboardType: 'default',
-            onChangeText: (value: string) =>
-              handleInputChange('confirmPass', value),
-            value: inputs.confirmPass.value,
           }}
         />
       </ScrollView>
       <View style={styles.buttonContainer}>
-        <Button mode="default" onPress={handleSubmit}>
-          Submit
-        </Button>
+        <Button mode="default" label="Submit" onPress={handleSubmit} />
       </View>
     </View>
   );

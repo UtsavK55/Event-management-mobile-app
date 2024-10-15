@@ -1,20 +1,11 @@
 import AuthNavigator from './AuthNavigator';
-import StackNavigator from './StackNavigator';
-import {useEffect} from 'react';
-import {getData} from '@src/storage/storage';
-import {useUserLoginContext} from '@src/contexts/isLoggedInContext';
+import {useUserLoginContext} from '@contexts/LoginContext';
+import TabNavigator from './TabNavigator';
 
 const Navigator = () => {
   const {loginId, setLoginId} = useUserLoginContext();
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const userId = await getData('isLoggedIn');
-      setLoginId(userId);
-    };
-
-    fetchUsers();
-  }, []);
-  return <>{!loginId ? <AuthNavigator /> : <StackNavigator />}</>;
+  
+  return <>{!loginId ? <AuthNavigator /> : <TabNavigator />}</>;
 };
 
 export default Navigator;
