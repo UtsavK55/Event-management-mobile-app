@@ -1,30 +1,39 @@
 import {StyleSheet} from 'react-native';
 
+import {colors} from '@src/theme/ColorStyles';
+
 export const styles = StyleSheet.create({
+
   inputContainer: {
-    marginHorizontal: 4,
-    marginVertical: 8,
+    marginHorizontal: 32,
+    marginVertical: 10,
   },
+
   label: {
-    fontSize: 12,
-    color: 'black',
+    fontSize: 14,
+    color: colors.textPrimary,
     marginBottom: 4,
   },
+
   input: {
-    backgroundColor: 'gray',
-    color: 'black',
+    backgroundColor: colors.secondary,
+    color: colors.textPrimary,
     padding: 6,
-    borderRadius: 6,
+    borderRadius: 8,
     fontSize: 18,
   },
+
   inputMultiline: {
     minHeight: 100,
     textAlignVertical: 'top',
   },
+
   invalidLabel: {
-    color: 'red',
+    fontSize: 12,
+    color: colors.error,
   },
+
   invalidInput: {
-    backgroundColor: 'red',
+    backgroundColor: colors.error,
   },
 });
