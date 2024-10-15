@@ -124,9 +124,6 @@ const EventForm = () => {
           invalid={!inputs.title.isValid}
           onChangeText={(value: string) => handleInputChange('title', value)}
           value={inputs.title.value}
-          textInputConfig={{
-            keyboardType: 'default',
-          }}
           required
           errorMessage={inputs.title.errorMessage}
         />
@@ -168,9 +165,6 @@ const EventForm = () => {
             handleInputChange('attendeeLimit', value)
           }
           value={inputs.attendeeLimit.value}
-          textInputConfig={{
-            keyboardType: 'default',
-          }}
           required
           errorMessage={inputs.attendeeLimit.errorMessage}
         />
@@ -179,9 +173,6 @@ const EventForm = () => {
           invalid={!inputs.location.isValid}
           onChangeText={(value: string) => handleInputChange('location', value)}
           value={inputs.location.value}
-          textInputConfig={{
-            keyboardType: 'default',
-          }}
           required
           errorMessage={inputs.location.errorMessage}
         />
