@@ -5,3 +5,10 @@ export const emptySignUpForm = {
   password: {value: '', isValid: true, errorMessage: ''},
   confirmPass: {value: '', isValid: true, errorMessage: ''},
 };
+
+export const emptyEventForm = {
+  title: {value: '', isValid: true, errorMessage: ''},
+  description: {value: '', isValid: true, errorMessage: ''},
+  attendeeLimit: {value: '', isValid: true, errorMessage: ''},
+  location: {value: '', isValid: true, errorMessage: ''},
+};
