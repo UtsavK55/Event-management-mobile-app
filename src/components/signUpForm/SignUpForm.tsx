@@ -14,12 +14,12 @@ import RadioButton from '@components/radioButton';
 import {generateId, logoImg, validateInput} from '@helpers/helper';
 import {useUserLoginContext} from '@contexts/LoginContext';
 import {storageKeys} from '@constants/storageKeys';
-import { emptySignUpForm } from '@src/constants/formConstants';
+import {emptySignUpForm} from '@src/constants/formConstants';
 
 import {styles} from './styles';
+import {ROUTES} from '@src/constants/Routes';
 
-const SignUpForm = () => {
-  
+const SignUpForm = ({navigation}: SignupScreenProps) => {
   const {setLoginId} = useUserLoginContext();
 
   const [inputs, setInputs] = useState(emptySignUpForm);
@@ -136,8 +136,9 @@ const SignUpForm = () => {
       return updatedInfo;
     });
 
-    setLoginId(signupData.id);
+    // setLoginId(signupData.id);
     setInputs(emptySignUpForm);
+    navigation.replace(ROUTES.LOGIN);
   };
 
   return (

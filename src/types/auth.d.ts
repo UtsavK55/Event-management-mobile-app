@@ -18,6 +18,7 @@ interface SignupInfoContextType {
 interface UserLoginContextType {
   loginId: string;
   setLoginId: Dispatch<SetStateAction<string>>;
+  isLoading: boolean;
 }
 
 interface FooterAuthProps {

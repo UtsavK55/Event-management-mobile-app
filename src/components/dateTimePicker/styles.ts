@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
 
   picker: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.searchBackground,
     flex: 1,
     color: colors.textPrimary,
     padding: 6,
@@ -36,5 +36,26 @@ export const styles = StyleSheet.create({
 
   inputText: {
     fontSize: 18,
+    color:'black'
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+  },
+
+  modalContent: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+  },
+  
+  closeButton: {
+    marginTop: 20,
+    color: 'blue',
   },
 });

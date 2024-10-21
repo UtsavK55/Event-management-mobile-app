@@ -10,9 +10,17 @@ type RootTabParamList = {
 };
 
 type DashboardStackParamList = {
-  DASHBOARDHOME: undefined;
-  ADD_EVENT: undefined;
+  DASHBOARD_SCREEN: undefined;
 };
+type EventStackParamList = {
+  ADD_EVENT: {event?:EventDetails};
+  EVENTS_SCREEN: undefined;
+  EVENT_DETAILS: undefined;
+};
+type ProfileStackParamList = {
+  PROFILE_SCREEN: undefined;
+  SETTINGS: undefined;
+}
 
 type SignupScreenProps = NativeStackScreenProps<AuthStackParamList, 'SIGNUP'>;
 
@@ -24,8 +32,18 @@ type DashboardScreenProps = NativeStackScreenProps<
 >;
 
 type AddEventScreenProps = NativeStackScreenProps<
-  DashboardStackParamList,
-  'ADDEVENT'
+  EventStackParamList,
+  'ADD_EVENT'
 >;
 
 type EventListScreenProps = NativeStackScreenProps<RootTabParamList, 'EVENTS'>;
+type ProfileScreenProps = NativeStackScreenProps<ProfileStackParamList, 'PROFILE_SCREEN'>;
+type DashboardStackScreenProps = NativeStackScreenProps<
+  DashboardStackParamList,
+  'DASHBOARD'
+>;
+type EventStackScreenProps = NativeStackScreenProps<
+  EventStackParamList,
+  'EVENTS_SCREEN'
+>;
+type SettingScreenProps = NativeStackScreenProps<ProfileStackParamList, 'SETTINGS'>;

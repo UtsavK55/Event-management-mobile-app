@@ -17,3 +17,9 @@ export const genderData = [
     title: 'Others',
   },
 ];
+
+export const sortData = [
+  {label: 'Date', value: 'date'},
+  {label: 'Attendee Limit', value: 'attendeeCount'},
+  {label: 'Alphabetical', value: 'alphabetical'},
+];

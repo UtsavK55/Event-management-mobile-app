@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
   radioButtonText: {
     fontSize: 16,
     marginLeft: 16,
+    color:'black'
   },
 
   options: {

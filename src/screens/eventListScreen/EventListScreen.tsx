@@ -3,18 +3,17 @@ import CustomHeader from '@components/header';
 import {Button} from '@src/components/button';
 import EventList from '@src/components/eventList';
 import {ROUTES} from '@src/constants/Routes';
+import {colors} from '@src/theme/ColorStyles';
+import Icon from 'react-native-vector-icons/Feather';
 
-const EventListScreen = ({navigation}: EventListScreenProps) => {
+const EventListScreen = ({navigation}: EventStackScreenProps) => {
   const handleAddEvent = () => {
     navigation.navigate(ROUTES.ADD_EVENT);
   };
 
   return (
     <BaseContainer>
-      <CustomHeader title="Event List" >
-        <Button label="+" mode="flat" onPress={handleAddEvent} />
-      </CustomHeader>
-      <EventList />
+      <EventList navigation={navigation} />
     </BaseContainer>
   );
 };

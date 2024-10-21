@@ -11,7 +11,7 @@ interface DateTimePickerComponentProps {
 
 interface AttendeeInfo {
   id: string;
-  name: string;
+  title: string;
   email: string;
 }
 
@@ -45,4 +45,18 @@ interface EventFilterProps {
   setSummarizedEventsArr: Dispatch<SetStateAction<Events>>;
   visible?: boolean;
   setVisible?: Dispatch<SetStateAction<boolean>>;
+}
+interface sortFilterContextType {
+  sortPreference: {label: string; value: string};
+  setSortPreference: React.Dispatch<
+    React.SetStateAction<{label: string; value: string}>
+  >;
+  filterUpcoming: boolean;
+  setFilterUpcoming: React.Dispatch<React.SetStateAction<boolean>>;
+  use24HourClock: boolean;
+  setUse24HourClock: React.Dispatch<React.SetStateAction<boolean>>;
+  dateFormat: {label: string; value: string};
+  setDateFormat: React.Dispatch<
+    React.SetStateAction<{label: string; value: string}>
+  >;
 }
