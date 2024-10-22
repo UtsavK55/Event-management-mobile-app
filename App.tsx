@@ -1,16 +1,20 @@
-import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
 
-import Navigator from '@navigation/Navigator';
 import {UserLoginProvider} from '@contexts/LoginContext';
-import {SignupInfoProvider} from '@contexts/SignupInfoContext';
+import Navigator from '@navigation/Navigator';
+import {SortFilterProvider} from '@src/contexts/SortFilterContext';
+import {StatusBar} from 'react-native';
 
 function App(): React.JSX.Element {
   return (
     <UserLoginProvider>
-      <NavigationContainer>
-        <Navigator />
-      </NavigationContainer>
+      <SortFilterProvider>
+        <NavigationContainer>
+          <StatusBar />
+          <Navigator />
+        </NavigationContainer>
+      </SortFilterProvider>
     </UserLoginProvider>
   );
 }

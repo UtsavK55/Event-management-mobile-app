@@ -22,19 +22,21 @@ export const UserLoginProvider: React.FC<{children: ReactNode}> = ({
   children,
 }) => {
 
+  const [isLoading, setIsLoading] = useState<boolean>(true); 
   const [loginId, setLoginId] = useState<string>('');
 
   useEffect(() => {
     const fetchUsers = async () => {
       const userId = await getData(storageKeys.loginId);
       setLoginId(userId || '');
+      setIsLoading(false);
     };
 
     fetchUsers();
   }, []);
   
   return (
-    <UserLoginContext.Provider value={{loginId, setLoginId}}>
+    <UserLoginContext.Provider value={{loginId, setLoginId, isLoading}}>
       {children}
     </UserLoginContext.Provider>
   );

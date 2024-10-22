@@ -2,7 +2,6 @@ import {colors} from '@src/theme/ColorStyles';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-
   eventList: {
     padding: 16,
   },
@@ -23,6 +22,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: colors.textPrimary,
   },
 
   eventDetail: {
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 4,
   },
-  
+
   eventDetailText: {
     marginLeft: 8,
     color: colors.iconColor,

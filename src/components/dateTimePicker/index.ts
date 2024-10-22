@@ -1,3 +1,3 @@
-import DateAndTimePicker from "./DateTimePicker";
+import DateAndTimePickerComponent from "./DateTimePicker";
 
-export default DateAndTimePicker
+export default DateAndTimePickerComponent

@@ -12,3 +12,8 @@ export const emptyEventForm = {
   attendeeLimit: {value: '', isValid: true, errorMessage: ''},
   location: {value: '', isValid: true, errorMessage: ''},
 };
+
+export const emptyAttendeeForm = {
+  title: {value: '', isValid: true, errorMessage: ''},
+  email: {value: '', isValid: true, errorMessage: ''},
+};

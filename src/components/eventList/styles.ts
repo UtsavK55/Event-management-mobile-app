@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.lightGray,
-    marginTop: 60,
   },
 
   header: {
@@ -19,6 +18,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color:'black'
   },
 
   searchContainer: {
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     height: 40,
+    color:'black'
   },
 
   filterSortContainer: {
@@ -94,13 +95,14 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
+    color:'black'
   },
 
   item: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.itemBorderColor,
-    backgroundColor: colors.secondary,
+    // backgroundColor: colors.secondary,
     marginVertical: 4,
     borderRadius: 8,
   },
@@ -116,8 +118,9 @@ export const styles = StyleSheet.create({
 
   buttonText: {
     flex: 1,
-    textAlign: 'center',
+    textAlign: 'left',
     color: colors.textPrimary,
+    paddingHorizontal:6
   },
 
   pickerContainer: {
@@ -129,4 +132,8 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
   },
+  sortSelect :{
+    fontWeight:'bold',
+    color:colors.primary
+  }
 });

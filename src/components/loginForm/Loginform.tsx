@@ -114,7 +114,7 @@ const LoginForm = () => {
         onChangeText={(value: string) => handleInputChange('password', value)}
         textInputConfig={{
           keyboardType: 'default',
-          secureTextEntry: 'true',
+          // secureTextEntry: 'true',
         }}
         required={true}
         errorMessage={inputs.password.errorMessage}

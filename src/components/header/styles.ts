@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.secondary,
     height: 60,
-    position: 'absolute',
-    top: 60,
+    // position: 'absolute',
+    // top: 60,
     left: 0,
     right: 0,
     zIndex: 1000,
@@ -31,10 +31,11 @@ export const styles = StyleSheet.create({
 
   title: {
     flex: 1,
-    marginRight: 48,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    color:'black',
+    marginRight:20,
   },
 
   rightComponent: {
